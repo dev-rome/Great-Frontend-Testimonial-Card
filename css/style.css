@@ -1,0 +1,177 @@
+/* ==========================================================================
+   1. Fonts — Noto Sans (variable, 400–700)
+   ========================================================================== */
+
+/* latin */
+@font-face {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400 500 600;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/notosans/v42/o-0bIpQlx3QUlC5A4PNB6Ryti20_6n1iPHjc5a7du3mhPy0.woff2")
+    format("woff2");
+}
+
+/* ==========================================================================
+   2. Design tokens
+   ========================================================================== */
+
+:root {
+  /* --- Color ------------------------------------------------------------ */
+  --color-white: #ffffff;
+  --color-neutral-900: #171717;
+  --color-neutral-600: #525252;
+
+  /* Background gradient stops (style guide) */
+  --color-gradient-from: #f9fafb;
+  --color-gradient-to: #d2d6db;
+  --gradient-page: linear-gradient(
+    to bottom right,
+    var(--color-gradient-from) 0%,
+    var(--color-gradient-to) 100%
+  );
+
+  /* --- Typography ------------------------------------------------------- */
+  --font-sans: "Noto Sans", sans-serif;
+
+  --text-sm: 0.875rem; /* 14px */
+  --text-sm--line-height: 1.25rem; /* 20px */
+  --text-base: 1rem; /* 16px */
+  --text-base--line-height: 1.5rem; /* 24px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-lg--line-height: 1.75rem; /* 28px */
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* --- Spacing (4px scale) ---------------------------------------------- */
+  --space-1: 1rem; /* 16px */
+  --space-2: 1.5rem; /* 24px */
+
+  /* --- Radius ----------------------------------------------------------- */
+  --radius-md: 0.5rem; /* 8px  — card */
+  --radius-full: 9999px; /* avatar */
+
+  /* --- Elevation -------------------------------------------------------- */
+  --shadow-card: 0 1px 2px 0 rgb(0 0 0 / 0.06), 0 1px 3px 0 rgb(0 0 0 / 0.1);
+
+  /* --- Layout ----------------------------------------------------------- */
+  --card-width: 21.25rem; /* 340px — fixed across all breakpoints */
+  --card-padding: var(--space-2); /* 24px */
+  --avatar-size: 3rem; /* 48px */
+  --page-padding: var(--space-1); /* 16px */
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100svh;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--text-base--line-height);
+  color: var(--color-neutral-600);
+  background: var(--gradient-page);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   4. Components — add your card styles here
+   ========================================================================== */
+
+.card {
+  width: 90%;
+  max-width: var(--card-width);
+  margin-inline: auto;
+  margin: 12.5rem auto;
+  background-color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-2);
+  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-md);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.card-header img {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: var(--radius-full);
+}
+
+.card-header h1 {
+  font-size: var(--text-lg);
+  line-height: var(--text-lg--line-height);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-neutral-900);
+}
+
+.card-header p {
+  font-size: var(--text-sm);
+  line-height: var(--text-sm--line-height);
+  color: var(--color-neutral-600);
+}
+
+.card-body {
+  font-size: var(--text-base);
+  line-height: var(--text-base--line-height);
+  color: var(--color-neutral-600);
+}
+
+/* ==========================================================================
+   5. Challenge credits
+   ========================================================================== */
+
+.credits {
+  color: #777;
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  font-size: 11px;
+  text-align: center;
+}
+
+.credits a {
+  color: #000;
+  font-weight: bold;
+}
